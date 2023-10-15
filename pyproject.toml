@@ -1,0 +1,10 @@
+[project]
+name = "flask-sandbox"
+version = "1.0.0"
+dependencies = [
+    "Flask",
+    "ruff",
+    "black",
+    "gunicorn",
+    "uvicorn",
+]
