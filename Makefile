@@ -2,7 +2,7 @@ PI = python
 PIP = pip
 APP = ./app
 HOST = 0.0.0.0
-PORT = 5000
+PORT = 3000
 ENTRYPOINT = wsgi:app
 PROD_WORKERS = 4
 
@@ -15,7 +15,7 @@ install-deps:
 
 # run server in development mode i.e. with file reload enabled
 run-dev:
-	flask --app ${ENTRYPOINT} run --host=${HOST} --port=${PORT} --debug
+	dotenv flask --app ${ENTRYPOINT} run --host=${HOST} --port=${PORT} --debug
 
 
 run-prod: 
@@ -25,9 +25,9 @@ run-prod:
 # recursively remove __pycache__ directories from project
 clean:
 	find . -type d -name  "__pycache__" -exec rm -r {} +
+	rm -r .*_cache
 	rm -r build
 	rm -r *.egg-info
-	rm -r .*_cache
 	
 
 # run automated code tests

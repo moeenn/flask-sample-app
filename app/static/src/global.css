@@ -13,3 +13,7 @@
 .flash-warn {
     @apply bg-orange-200;
 }
+
+.flash-info {
+    @apply bg-blue-200;
+}

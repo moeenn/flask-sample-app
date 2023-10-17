@@ -3,11 +3,12 @@ name = "flask-sandbox"
 version = "1.0.0"
 dependencies = [
     "Flask",
-    "ruff",
-    "black",
+    "dotenv-cli",
     "gunicorn",
     "uvicorn",
     "turbo-flask",
+    "ruff",
+    "black",
 ]
 
 [tool.black]

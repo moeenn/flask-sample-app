@@ -1,21 +1,33 @@
-from flask import Flask, render_template, request, redirect, flash, make_response
+import os
+from flask import (
+    Flask,
+    render_template,
+    request,
+    redirect,
+    flash,
+    make_response,
+)
 from turbo_flask import Turbo
 
 app = Flask(__name__)
 turbo = Turbo(app)
 
-# TODO: read from env
-app.secret_key="abc123123123"
+app.secret_key = os.environ.get("APP_SECRET")
 
 
 @app.get("/")
 def home_page():
-    message = "Hello from home page"
+    message = "Hello from home page "
     return render_template("home.html", message=message)
 
 
 @app.get("/login")
 def login_page():
+    user_id = request.cookies.get("app_login")
+    if user_id:
+        flash("You are already logged in", "info")
+        return redirect("/")
+
     return render_template("login.html")
 
 
@@ -41,7 +53,7 @@ def user_logout():
         resp = make_response(redirect("/"))
         resp.delete_cookie("app_login")
         return resp
-    
+
     return redirect("/")
 
 
