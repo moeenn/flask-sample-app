@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='dist/global.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+  {% block scripts %}{% endblock %}
+  <title>Site - {% block title%}{% endblock %}</title>
+</head>
+
+<body>
+  <div class="container mx-auto">
+    <nav class="flex justify-between p-4">
+      <div>
+        <a href="/">
+          <h1 class="text-3xl text-gray-800">Logo</h1>
+        </a>
+      </div>
+
+      <div class="flex space-x-2">
+        <a href="/login" class="text-sm my-auto text-gray-800 hover:bg-gray-100 px-3 py-2 rounded">Login</a>
+      </div>
+    </nav>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <aside class="container mx-auto p-4">
+    {% for category, message in messages %}
+    <ul class="flash-{{ category }} px-3 py-2 rounded">
+      <li class="text-sm py-2">{{ message }}</li>
+    </ul>
+    {% endfor %}
+  </aside>
+  {% endif %}
+  {% endwith %}
+
+  <main class="container mx-auto px-4">
+    {% block content%}{% endblock %}
+  </main>
+</body>
+
+</html>
