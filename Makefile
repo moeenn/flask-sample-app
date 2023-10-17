@@ -36,7 +36,7 @@ test:
 
 
 fmt:
-	${PI} -m black ${APP}
+	black ${APP}
 
 
 lint:
