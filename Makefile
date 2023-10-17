@@ -15,7 +15,7 @@ install-deps:
 
 # run server in development mode i.e. with file reload enabled
 run-dev:
-	flask --app main run --host=${HOST} --port=${PORT} --debug
+	flask --app ${ENTRYPOINT} run --host=${HOST} --port=${PORT} --debug
 
 
 run-prod: 
@@ -41,3 +41,11 @@ fmt:
 
 lint:
 	${PI} -m ruff check ${APP}
+
+
+assets-watch:
+	npx tailwindcss -i ./app/static/src/global.css -o ./app/static/dist/global.css --watch
+
+
+build:
+	npx tailwindcss -i ./app/static/src/global.css -o ./app/static/dist/global.css
