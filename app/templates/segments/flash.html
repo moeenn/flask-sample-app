@@ -1,0 +1,11 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<aside>
+  {% for category, message in messages %}
+  <ul class="flash-{{ category }} px-3 py-2 rounded">
+    <li class="text-sm py-2">{{ message }}</li>
+  </ul>
+  {% endfor %}
+</aside>
+{% endif %}
+{% endwith %}

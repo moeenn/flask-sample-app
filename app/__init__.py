@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template
 from turbo_flask import Turbo
 from .modules.public_pages.public_pages_blueprint import public_pages_blueprint
+from .modules.user.user_blueprint import user_blueprint
 from .modules.auth.auth_blueprint import auth_blueprint
 from .modules.dashboard.dashboard_blueprint import dashboard_blueprint
 
@@ -29,5 +30,6 @@ def internal_server_error(error):
     register all blueprints (i.e. sub-routers) here
 """
 app.register_blueprint(public_pages_blueprint)
+app.register_blueprint(user_blueprint, url_prefix="/user")
 app.register_blueprint(auth_blueprint, url_prefix="/auth")
 app.register_blueprint(dashboard_blueprint, url_prefix="/dashboard")
