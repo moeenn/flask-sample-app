@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-public_pages_blueprint = Blueprint("public_pages", __name__)
+public_pages_blueprint = Blueprint("public_pages", __name__, template_folder="templates")
 
 
 @public_pages_blueprint.get("/")

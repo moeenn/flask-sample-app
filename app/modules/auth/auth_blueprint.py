@@ -7,7 +7,7 @@ from flask import (
     make_response,
 )
 
-auth_blueprint = Blueprint("auth", __name__)
+auth_blueprint = Blueprint("auth", __name__, template_folder="templates")
 
 
 @auth_blueprint.get("/login")

@@ -1,6 +1,6 @@
 from flask import Blueprint, request, flash, redirect, render_template
 
-dashboard_blueprint = Blueprint("dashboard", __name__)
+dashboard_blueprint = Blueprint("dashboard", __name__, template_folder="templates")
 
 
 @dashboard_blueprint.get("/")
