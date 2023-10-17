@@ -6,6 +6,8 @@
     </div>
 
     <div class="flex space-x-2">
+        <a href="{{ url_for('dashboard.dashboard_page') }}"
+            class="text-sm my-auto text-gray-800 hover:bg-gray-100 px-3 py-2 rounded">Dashboard</a>
         <a href="{{ url_for('user.user_register_page') }}"
             class="text-sm my-auto text-gray-800 hover:bg-gray-100 px-3 py-2 rounded">Register</a>
         <a href="{{ url_for('auth.login_page') }}"

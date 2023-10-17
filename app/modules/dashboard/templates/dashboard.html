@@ -7,3 +7,14 @@
     <h1>This is a protected dashboard page</h1>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", main)
+    document.addEventListener("turbo:before-render", main)
+    
+    function main() {
+        alert("Page loaded")
+    }
+</script>
+{% endblock %}
