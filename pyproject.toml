@@ -8,3 +8,6 @@ dependencies = [
     "gunicorn",
     "uvicorn",
 ]
+
+[tool.black]
+line-length = 80
