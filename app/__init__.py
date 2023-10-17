@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, flash, make_response
+from turbo_flask import Turbo
 
 app = Flask(__name__)
+turbo = Turbo(app)
 
 # TODO: read from env
 app.secret_key="abc123123123"
