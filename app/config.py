@@ -4,5 +4,6 @@ from .utilities.env import env
 
 @dataclass
 class Config:
-    app_secret: str = env("APP_SECRET")
-    database_uri: str = env("DATABASE_URI")
+    SECRET_KEY: str = env("APP_SECRET")
+    SQLALCHEMY_DATABASE_URI: str = env("DATABASE_URI")
+    SQLALCHEMY_TRACK_MODIFICATIONS: bool = False
