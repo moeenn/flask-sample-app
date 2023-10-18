@@ -4,6 +4,8 @@ version = "1.0.0"
 dependencies = [
     "Flask",
     "dotenv-cli",
+    "Flask-SQLAlchemy",
+    "Flask-Migrate",
     "gunicorn",
     "uvicorn",
     "turbo-flask",

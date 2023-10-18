@@ -5,8 +5,6 @@ HOST = 0.0.0.0
 PORT = 3000
 ENTRYPOINT = wsgi:app
 PROD_WORKERS = 4
-SRC_CSS = ${APP}/static/src/global.css
-OUT_CSS = ${APP}/static/dist/global.css
 
 
 # install project dependencies listed inside pyproject.toml file
@@ -17,7 +15,7 @@ install-deps:
 	@npm i -D
 
 
-# run server in development mode i.e. with file reload enabled
+# run server in development mode i.e. with file reload / debug enabled
 run-dev:
 	dotenv flask --app ${ENTRYPOINT} run --host=${HOST} --port=${PORT} --debug
 
@@ -25,6 +23,25 @@ run-dev:
 run-prod: 
 	gunicorn ${ENTRYPOINT} --workers ${PROD_WORKERS} --bind 0.0.0.0:${PORT} --log-level info
 
+
+shell:
+	dotenv flask --app ${ENTRYPOINT} shell
+
+
+db-init:
+	dotenv flask --app ${ENTRYPOINT} db init
+
+
+db-migrate:
+	@echo "Generating migrations"
+	dotenv flask --app ${ENTRYPOINT} db migrate
+	@echo "\n\nApplying migrations"
+	dotenv flask --app ${ENTRYPOINT} db upgrade
+
+
+gen-secret:
+	${PI} ${APP}/scripts/generate_secret.py
+	
 
 # run automated code tests
 test:
@@ -37,14 +54,6 @@ fmt:
 
 lint:
 	${PI} -m ruff check ${APP}
-
-
-watch-assets:
-	npx tailwindcss -i ${SRC_CSS} -o ${OUT_CSS} --watch
-
-
-build-assets:
-	npx tailwindcss -i ${SRC_CSS} -o ${OUT_CSS}
 
 
 # recursively remove __pycache__ directories from project

@@ -17,4 +17,3 @@ def user_register_page():
 def user_register():
     flash("Account created successfully", "success")
     return redirect(url_for("auth.login_page"))
-
