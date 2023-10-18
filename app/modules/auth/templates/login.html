@@ -1,20 +1,23 @@
 {% extends "layouts/public_layout.html" %}
-
 {% block title %}Login{% endblock %}
-
+{% from "macros/field_errors.html" import field_errors %}
 {% block content %}
 <div class="py-6">
   <h2 class="text-xl text-gray-800 mb-4">Login</h2>
-  <form action="{{ url_for('auth.user_login') }}" method="post" class="flex-col space-y-8">
+  <form action="{{ url_for('auth.login') }}" method="post" class="flex-col space-y-8">
+    {{ form.csrf_token }}
     <fieldset class="flex-col space-y-2">
       <label for="email" class="block text-sm text-gray-800">Email</label>
-      <input type="email" name="email" class="bg-gray-200 px-3 py-2 rounded active:bg-gray-300 w-full" required />
+      <input type="email" name="email" class="bg-gray-200 px-3 py-2 rounded active:bg-gray-300 w-full" required {% if
+        form.email.data %} value="{{ form.email.data }}" {% endif %} />
+      {{ field_errors(form.email) }}
     </fieldset>
 
     <fieldset>
       <label for="password" class="block text-sm text-gray-800">Password</label>
       <input type="text" name="password" class="bg-gray-200 px-3 py-2 rounded active:bg-gray-300 w-full" required
         minlength="8" />
+        {{ field_errors(form.password) }}
     </fieldset>
 
     <fieldset>
@@ -23,7 +26,7 @@
   </form>
 
   <div class="pt-8">
-    <p class="text-sm text-gray-700">Don't have an account? <a href="{{ url_for('user.user_register_page') }}"
+    <p class="text-sm text-gray-700">Don't have an account? <a href="{{ url_for('user.user_register') }}"
         class="font-bold text-gray-800">Create account here</a>.</p>
   </div>
 </div>

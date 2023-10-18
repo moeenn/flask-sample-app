@@ -10,6 +10,6 @@ def dashboard_page():
     user_id = request.cookies.get("app_login")
     if not user_id:
         flash("Please login to access this page", "error")
-        return redirect(url_for("auth.login_page"))
+        return redirect(url_for("auth.login"))
 
     return render_template("dashboard.html")

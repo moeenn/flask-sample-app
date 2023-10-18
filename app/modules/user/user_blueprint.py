@@ -1,19 +1,16 @@
 from flask import Blueprint, render_template, flash, redirect, url_for, request
+from .user_repo import create_user
+from .user_forms import UserRegisterForm
 
 user_blueprint = Blueprint("user", __name__, template_folder="templates")
 
 
-@user_blueprint.get("/register")
-def user_register_page():
-    user_id = request.cookies.get("app_login")
-    if user_id:
-        flash("You are already logged in", "info")
-        return redirect(url_for("public_pages.home_page"))
-
-    return render_template("user_register.html")
-
-
-@user_blueprint.post("/register")
+@user_blueprint.route("/register", methods=["GET", "POST"])
 def user_register():
-    flash("Account created successfully", "success")
-    return redirect(url_for("auth.login_page"))
+    form = UserRegisterForm(request.form)
+    if request.method == "POST" and form.validate():
+        create_user(email=form.email.data, password=form.password.data)
+        flash("Account created successfully", "success")
+        return redirect(url_for("auth.login"))
+
+    return render_template("user_register.html", form=form)

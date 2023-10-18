@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='dist/global.css') }}">
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
-  {{ turbo() }}
   {% block scripts %}{% endblock %}
   <title>Site - {% block title%}{% endblock %}</title>
 </head>

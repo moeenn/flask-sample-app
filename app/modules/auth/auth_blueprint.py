@@ -7,33 +7,24 @@ from flask import (
     make_response,
     url_for,
 )
+from .auth_forms import LoginForm
 
 auth_blueprint = Blueprint("auth", __name__, template_folder="templates")
 
 
-@auth_blueprint.get("/login")
-def login_page():
-    user_id = request.cookies.get("app_login")
-    if user_id:
-        flash("You are already logged in", "info")
-        return redirect(url_for("public_pages.home_page"))
+@auth_blueprint.route("/login", methods=["GET", "POST"])
+def login():
+    form = LoginForm(request.form)
+    if request.method == "POST" and form.validate():
+        if form.email.data == "admin@site.com" and form.password.data == "abc123123123":
+            resp = make_response(redirect(url_for("dashboard.dashboard_page")))
+            resp.set_cookie("app_login", "100")
+            flash("Login successful", "success")
+            return resp
 
-    return render_template("login.html")
-
-
-@auth_blueprint.post("/login")
-def user_login():
-    email = request.form.get("email")
-    password = request.form.get("password")
-
-    if email == "admin@site.com" and password == "123123123":
-        resp = make_response(redirect(url_for("dashboard.dashboard_page")))
-        resp.set_cookie("app_login", "100")
-        flash("Login successful", "success")
-        return resp
-
-    flash("Invalid email or password", "error")
-    return redirect(url_for("auth.login_page"))
+    if request.method == "POST":
+        flash("Invalid email / password", "error")
+    return render_template("login.html", form=form)
 
 
 @auth_blueprint.get("/logout")
