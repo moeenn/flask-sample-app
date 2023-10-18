@@ -8,7 +8,7 @@ user_blueprint = Blueprint("user", __name__, template_folder="templates")
 @user_blueprint.route("/register", methods=["GET", "POST"])
 def user_register():
     form = UserRegisterForm(request.form)
-    if request.method == "POST" and form.validate():
+    if form.validate_on_submit():
         create_user(email=form.email.data, password=form.password.data)
         flash("Account created successfully", "success")
         return redirect(url_for("auth.login"))

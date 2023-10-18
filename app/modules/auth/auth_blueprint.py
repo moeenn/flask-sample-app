@@ -15,8 +15,11 @@ auth_blueprint = Blueprint("auth", __name__, template_folder="templates")
 @auth_blueprint.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm(request.form)
-    if request.method == "POST" and form.validate():
-        if form.email.data == "admin@site.com" and form.password.data == "abc123123123":
+    if form.validate_on_submit():
+        if (
+            form.email.data == "admin@site.com"
+            and form.password.data == "abc123123123"
+        ):
             resp = make_response(redirect(url_for("dashboard.dashboard_page")))
             resp.set_cookie("app_login", "100")
             flash("Login successful", "success")
