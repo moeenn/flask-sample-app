@@ -6,6 +6,7 @@ dependencies = [
     "dotenv-cli",
     "Flask-SQLAlchemy",
     "Flask-Migrate",
+    "invoke,
     "gunicorn",
     "uvicorn",
     "turbo-flask",

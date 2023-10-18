@@ -1,10 +1,9 @@
 # Flask sample application
-A simple web application created using Python Flask in a purely server rendered manner. See `Makefile` for usage commands.
+A simple web application created using Python Flask in a purely server rendered manner. See `task.py` for usage commands.
 
 
 ## Setup
 Before the project can be setup, please ensure the following tools are installed on the system
-- `make` - For running common project-related commands
 - `nodejs` / `npm` - For installing front-end dependencies
 - `venv` - For creating python virutal environments
 
@@ -17,8 +16,23 @@ $ python -m venv .venv
 # activate the environment
 $ . .venv/bin/activate
 
-# install project dependencies
-$ make install-deps
+# install back-end dependencies (listed inside pyproject.toml file)
+$ pip install .
+
+# install front-end dependencies
+$ npm i -D
+
+# create the .env file
+$ cp -v .env.example .env
+```
+
+
+## Generate app secret
+A unique secret key is required by the application for security reasons. Generate
+the key using the following command and the value inside `.env` file
+
+```bash
+$ invoke gensecret
 ```
 
 
@@ -26,17 +40,17 @@ $ make install-deps
 
 ```bash
 # ensure the database is initialized
-$ make db-init
+$ invoke dbinit
 
 # run the migrations
-$ make db-migrate -m <migration-name>
+$ invoke dbmigrate
 ```
 
 **Note**: Migrations can also be run through ```flask shell```
 
 ```bash
 # open the application shell
-$ make shell
+$ invoke shell
 
 >>> from app import db
 >>> db.create_all()
