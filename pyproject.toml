@@ -8,6 +8,8 @@ dependencies = [
     "Flask-Migrate",
     "argon2-cffi",
     "Flask-WTF",
+    "Flask-Login",
+    "Werkzeug==2.3",
     "invoke",
     "gunicorn",
     "uvicorn",
