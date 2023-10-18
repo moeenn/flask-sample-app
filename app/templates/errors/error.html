@@ -1,11 +1,9 @@
 {% extends "layouts/public_layout.html" %}
-
 {% block title %}{{ message }}{% endblock %}
-
 {% block content %}
 <div class="py-6">
-    <div class="flex bg-red-200 p-6 rounded">
-        <h1 class="m-auto">{{ status }} - {{ message }}</h1>
-    </div>
+  <div class="flex bg-red-200 p-6 rounded">
+    <h1 class="m-auto">{{ status }} - {{ message }}</h1>
+  </div>
 </div>
 {% endblock %}

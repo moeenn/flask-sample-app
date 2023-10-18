@@ -1,15 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{ url_for('static', filename='dist/global.css') }}">
-  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='dist/global.css') }}" />
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png" />
   {% block scripts %}{% endblock %}
-  <title>Site - {% block title%}{% endblock %}</title>
+  <title>Site - {% block title %}{% endblock %}</title>
 </head>
 
 <body>
   {% block body %}{% endblock %}
+</body>
+
 </html>

@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 .flash-success {
-    @apply bg-green-200;
+  @apply bg-green-200;
 }
 
 .flash-error {
-    @apply bg-red-200;
+  @apply bg-red-200;
 }
 
 .flash-warn {
-    @apply bg-orange-200;
+  @apply bg-orange-200;
 }
 
 .flash-info {
-    @apply bg-blue-200;
+  @apply bg-blue-200;
 }

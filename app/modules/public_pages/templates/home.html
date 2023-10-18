@@ -1,12 +1,11 @@
 {% extends "layouts/public_layout.html" %}
-
 {% block title %}Home Page{% endblock %}
-
 {% block content %}
 <div class="py-6">
-    <div class="pb-4">
-        <img src="{{ url_for('static', filename='banner.jpg') }}" alt="banner" class="w-full object-cover shadow-lg rounded" />
-    </div>
-    <h1>{{ message }}</h1>
+  <div class="pb-4">
+    <img src="{{ url_for('static', filename='banner.jpg') }}" alt="banner"
+      class="w-full object-cover shadow-lg rounded" />
+  </div>
+  <h1>{{ message }}</h1>
 </div>
 {% endblock %}
