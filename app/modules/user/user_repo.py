@@ -11,3 +11,8 @@ def create_user(email: str, password: str) -> User:
     db.session.add(new_user)
     db.session.commit()
     return new_user
+
+
+def update_password(user: User, new_password: str) -> None:
+    user.password = password_hasher.hash(new_password)
+    db.session.commit()

@@ -15,14 +15,14 @@
 
     <fieldset>
       <label for="password" class="block text-sm text-gray-800">Password</label>
-      <input type="text" name="password" class="bg-gray-200 px-3 py-2 rounded active:bg-gray-300 w-full" required
+      <input type="password" name="password" class="bg-gray-200 px-3 py-2 rounded active:bg-gray-300 w-full" required
         minlength="8" />
       {{ field_errors(form.password) }}
     </fieldset>
 
     <fieldset>
       <label for="confirm_password" class="block text-sm text-gray-800">Confirm Password</label>
-      <input type="text" name="confirm_password" class="bg-gray-200 px-3 py-2 rounded active:bg-gray-300 w-full"
+      <input type="password" name="confirm_password" class="bg-gray-200 px-3 py-2 rounded active:bg-gray-300 w-full"
         required minlength="8" />
       {{ field_errors(form.confirm_password) }}
     </fieldset>

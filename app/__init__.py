@@ -9,7 +9,9 @@ from .config import Config
 from .modules.public_pages.public_pages_blueprint import public_pages_blueprint
 from .modules.user.user_blueprint import user_blueprint
 from .modules.auth.auth_blueprint import auth_blueprint
-from .modules.forgot_password.forgot_password_blueprint import forgot_password_blueprint
+from .modules.forgot_password.forgot_password_blueprint import (
+    forgot_password_blueprint,
+)
 from .modules.dashboard.dashboard_blueprint import dashboard_blueprint
 
 

@@ -12,7 +12,9 @@ class ResetPasswordForm(FlaskForm):
         validators=[
             validators.DataRequired(),
             validators.Length(min=8),
-            validators.EqualTo("confirm_password", "Password fields must match"),
+            validators.EqualTo(
+                "confirm_password", "Password fields must match"
+            ),
         ],
     )
     confirm_password = PasswordField(

@@ -10,6 +10,7 @@ dependencies = [
     "Flask-WTF",
     "Flask-Login",
     "Werkzeug==2.3",
+    "pyjwt",
     "invoke",
     "gunicorn",
     "uvicorn",
