@@ -9,6 +9,7 @@ from .config import Config
 from .modules.public_pages.public_pages_blueprint import public_pages_blueprint
 from .modules.user.user_blueprint import user_blueprint
 from .modules.auth.auth_blueprint import auth_blueprint
+from .modules.forgot_password.forgot_password_blueprint import forgot_password_blueprint
 from .modules.dashboard.dashboard_blueprint import dashboard_blueprint
 
 
@@ -44,4 +45,5 @@ app.register_error_handler(500, make_handler(500, "Internal server error"))
 app.register_blueprint(public_pages_blueprint)
 app.register_blueprint(user_blueprint, url_prefix="/user")
 app.register_blueprint(auth_blueprint, url_prefix="/auth")
+app.register_blueprint(forgot_password_blueprint, url_prefix="/forgot-password")
 app.register_blueprint(dashboard_blueprint, url_prefix="/dashboard")
