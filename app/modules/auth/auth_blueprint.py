@@ -9,7 +9,7 @@ from flask import (
 from .auth_forms import LoginForm
 from app.utilities.password_hasher import password_hasher
 from app.modules.user.user_model import User
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, current_user
 
 
 auth_blueprint = Blueprint("auth", __name__, template_folder="templates")
@@ -17,6 +17,10 @@ auth_blueprint = Blueprint("auth", __name__, template_folder="templates")
 
 @auth_blueprint.route("/login", methods=["GET", "POST"])
 def login():
+    if current_user.is_authenticated:
+        flash("You are already logged-in", "info")
+        return redirect(url_for("public_pages.home_page"))
+
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
