@@ -1,6 +1,13 @@
 # Flask sample application
 A simple web application created using Python Flask in a purely server rendered manner. See `task.py` for usage commands.
 
+## Screenshots
+![Home](/screenshots/home.png)
+![Login](/screenshots/login.png)
+![Register](/screenshots/register.png)
+![Reset Password](/screenshots/reset_password.png)
+![Dashboard](/screenshots/dashboard.png)
+
 
 ## Setup
 Before the project can be setup, please ensure the following tools are installed on the system
