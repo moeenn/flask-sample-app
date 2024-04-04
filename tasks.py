@@ -3,12 +3,12 @@ import os
 
 
 PI = "python"
-PIP = "pip"
 APP = "./app"
 HOST = "0.0.0.0"
-PORT = 3000
+PORT = 5000
 ENTRYPOINT = "wsgi:app"
 PROD_WORKERS = 4
+
 
 """
 Project task commands: Tasks can be executed using command `invoke <task-name>`
@@ -44,7 +44,7 @@ def dbmigrate(c, docs=False) -> None:
 
 
 @task
-def gensecret(c, docs=False) -> None:
+def secret(c, docs=False) -> None:
     c.run(f"{PI} {APP}/scripts/generate_secret.py")
 
 
@@ -55,7 +55,7 @@ def test(c, docs=False) -> None:
 
 @task
 def fmt(c, docs=False) -> None:
-    c.run(f"black {APP}")
+    c.run(f"{PI} -m ruff format {APP}")
 
 
 @task
@@ -68,10 +68,7 @@ def clean(c, docs=False) -> None:
     # recursively remove __pycache__ directories from project
     print("Removing cache files...")
     c.run("find . -type d -name  '__pycache__' -exec rm -r {} +")
-    c.run("rm -r .*_cache >& /dev/null")
-    c.run("rm -r *.egg-info >& /dev/null")
 
-    build_dir = os.path.join(os.getcwd(), "build")
-    if os.path.exists(build_dir):
-        c.run(f"rm -r {build_dir}")
-
+    dist_dir = os.path.join(os.getcwd(), "dist")        
+    if os.path.exists(dist_dir):
+        c.run(f"rm -rf {dist_dir}")

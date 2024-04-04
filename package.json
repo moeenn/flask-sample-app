@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "css:build": "npx tailwindcss -i ./app/static/src/global.css -o ./app/static/dist/global.css",
-    "css:watch": "npx tailwindcss -i ./app/static/src/global.css -o ./app/static/dist/global.css --watch"
+    "css:dev": "npx tailwindcss -i ./app/static/src/global.css -o ./app/static/dist/global.css --watch"
   },
   "keywords": [],
   "author": "",
